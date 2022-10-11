@@ -521,7 +521,7 @@ regpredict <- function(rgrp,traindata, dayn) {
 #-----------------------------------------------------------------------------
 
 #' Synthesises downward longwave radiation based on Tair and rel humidity
-SynthesizeLWdown <- function(TairK,RH,technique) {
+SynthesizeLWdown <- function(TairK,RH, technique = "Abramowitz_2012") {
   
   #Three techniques available, see Abramowitz et al. (2012),
   #Geophysical Research Letters, 39, L04808 for details
@@ -529,7 +529,7 @@ SynthesizeLWdown <- function(TairK,RH,technique) {
   zeroC <- 273.15
   
   #Inputs missing, set lwdown missing
-  if (is.na(TairK) | is.na(RH)) {
+  if (any(is.na(TairK)) | any(is.na(RH))) {
     lwdown <- NA
 
   #Else synthesise value
