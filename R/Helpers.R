@@ -1,28 +1,33 @@
 #' Gets a Fluxnet file template (or full file name if site codes and years are specified)
 #'
 #' @export
-get_fluxnet_file_template <- function(site_code = "[A-Z]{2}-[A-Za-z0-9]{3}",
-                                      datasetname = "FLUXNET2015",
-                                      subset = "FULLSET",
-                                      resolution = "[A-Z]{2}",
-                                      flx2015_years = "[0-9]{4}-[0-9]{4}",
-                                      lathuile_year="[0-9]{4}",
-                                      datasetversion = "[0-9]{1}-[0-9]{1}",
-                                      extension=".csv") {
+get_fluxnet_file_template <- function(
+    site_code = "[A-Z]{2}-[A-Za-z0-9]{3}",
+    datasetname = "FLUXNET2015",
+    subset = "FULLSET",
+    resolution = "[A-Z]{2}",
+    flx2015_years = "[0-9]{4}-[0-9]{4}",
+    lathuile_year="[0-9]{4}",
+    datasetversion = "[0-9]{1}-[0-9]{1}",
+    extension=".csv"
+    ) {
   
-    if(datasetname=="LaThuile"){
+    if(datasetname == "LaThuile"){
       file_template <- paste(site_code, lathuile_year, sep=".")
     } else{
+      
       version <- gsub("\\.", "-", datasetversion)
+      prefix <- "[A-Z]{2}"
+      
       if (is.character(resolution) & nchar(resolution) > 0) {
-        file_template <- paste("FLX", site_code, datasetname, subset, resolution,
+        file_template <- paste(prefix, site_code, datasetname, subset, resolution,
                                flx2015_years, version, sep = "_")
         file_template <- paste0(file_template, extension)
       } else {
-        file_template <- paste("FLX", site_code, datasetname, subset, flx2015_years,
+        file_template <- paste(prefix, site_code, datasetname, subset, flx2015_years,
                                version, sep = "_")
         file_template <- paste0(file_template, extension)
-      }      
+      }
     }
 
     return(file_template)
@@ -34,7 +39,7 @@ get_fluxnet_file_template <- function(site_code = "[A-Z]{2}-[A-Za-z0-9]{3}",
 #'
 #' @export
 get_fluxnet_erai_template <- function(site_code, ...) {
-    return(get_fluxnet_file_template(site_code = site_code, subset = "ERAI", ...))
+    return(get_fluxnet_file_template(site_code = site_code, subset = "ERA[A-Za-z0-9]{1}", ...))
 }
 
 #-----------------------------------------------------------------------------
@@ -55,7 +60,12 @@ get_fluxnet_files <- function(path, site_code = "[A-Z]{2}-[A-Za-z0-9]{3}", ...) 
 #' @export
 get_fluxnet_erai_files <- function(path, site_code = "[A-Z]{2}-[A-Za-z0-9]{3}", ...) {
   template <- get_fluxnet_erai_template(site_code = site_code, ...)
-  files <- list.files(path, template, full.names = TRUE, ignore.case=TRUE)
+  files <- list.files(
+    path,
+    template,
+    full.names = TRUE,
+    ignore.case = TRUE
+    )
   
   return(files)
 }

@@ -80,7 +80,6 @@ convert_fluxnet_to_netcdf <- function(
   ### Initialise site log ###
   site_log <- initialise_sitelog(site_code, out_paths)
   
-  
   ### Set expected values for missing values, QC flags and time stamps ###
   
   #First check that fluxnet2015 version specified correctly, if using it
