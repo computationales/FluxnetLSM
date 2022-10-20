@@ -162,8 +162,13 @@ get_site_metadata_from_CSV <- function(
 
     # allow for an external file to be called instead of a
     # a hard coded one using a new argument
-    csv_data <- try(read.csv(site_csv_file, header = TRUE,
-                    stringsAsFactors = FALSE))
+    csv_data <- try(
+      read.csv(
+        site_csv_file,
+        header = TRUE,
+        stringsAsFactors = FALSE
+      )
+    )
 
     if (is.na(metadata[1])) {  # [1] to skip if site_code is set
         # get all existing metadata as a list of lists
@@ -177,7 +182,9 @@ get_site_metadata_from_CSV <- function(
 
     site_code <- get_site_code(metadata)
 
-    message("Loading metadata for ", site_code, " from csv_data cache (", site_csv_file, ")")
+    message("Loading metadata for ",
+            site_code,
+            " from csv_data cache (", site_csv_file, ")")
 
     #Found site code in CSV
     if (site_code %in% csv_data$SiteCode) {
@@ -576,8 +583,14 @@ warn_missing_metadata <- function(metadata) {
 #'
 #' @return metadata list
 #' @export
-get_site_metadata <- function(site_code, incl_processing=TRUE,
-                              use_csv=TRUE, update_csv=FALSE, ...) {
+get_site_metadata <- function(
+    site_code,
+    incl_processing=TRUE,
+    use_csv=TRUE,
+    update_csv=FALSE,
+    ...
+    ) {
+  
     #Initialise warnings
     warnings <- ""
 
@@ -603,5 +616,10 @@ get_site_metadata <- function(site_code, incl_processing=TRUE,
         save_metadata_to_csv(metadata)
     }
 
-    return(list(out=metadata,warn=warnings))
+    return(
+      list(
+        out = metadata,
+        warn = warnings
+        )
+      )
 }

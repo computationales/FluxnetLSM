@@ -195,7 +195,8 @@ convert_fluxnet_to_netcdf <- function(
   } else if (conv_opts$metadata_source == 'csv') {
       site_info <- get_site_metadata_from_CSV(
         site_code,
-        model = conv_opts$model
+        model = conv_opts$model,
+        site_csv_file = site_csv_file
         )
   } else if (conv_opts$metadata_source == 'web') {
       

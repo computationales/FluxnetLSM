@@ -17,7 +17,7 @@ get_fluxnet_file_template <- function(
     } else{
       
       version <- gsub("\\.", "-", datasetversion)
-      prefix <- "[A-Z]{2}"
+      prefix <- "[A-Z]{3}"
       
       if (is.character(resolution) & nchar(resolution) > 0) {
         file_template <- paste(prefix, site_code, datasetname, subset, resolution,
@@ -49,6 +49,7 @@ get_fluxnet_erai_template <- function(site_code, ...) {
 #' @export
 get_fluxnet_files <- function(path, site_code = "[A-Z]{2}-[A-Za-z0-9]{3}", ...) {
     template <- get_fluxnet_file_template(site_code = site_code, ...)
+    print(template)
     files <- list.files(path, template, full.names = TRUE, ignore.case=TRUE)
     return(files)
 }
@@ -92,7 +93,7 @@ get_fluxnet_version_no <- function(file) {
 get_path_site_code <- function(path) {
   #assumes a FLUXNET2015 file, e.g FLX_US-Ha1_FLUXNET2015_FULLSET_HR_1991-2012_1-3.csv
   filename  <- basename(path)
-  if (substring(filename[1], 1, nchar("FLX")) == "FLX"){     #better implementation but only for R>3.3: startsWith(filename, "FLX_")) {
+  if (substring(filename[1], 1, nchar("FLX")) == "FLX"){
     site_code <- substr(filename, start = 5, stop = 10)
   } else {
     site_code <- substr(filename, start=1, stop = 6)
