@@ -49,7 +49,6 @@ get_fluxnet_erai_template <- function(site_code, ...) {
 #' @export
 get_fluxnet_files <- function(path, site_code = "[A-Z]{2}-[A-Za-z0-9]{3}", ...) {
     template <- get_fluxnet_file_template(site_code = site_code, ...)
-    print(template)
     files <- list.files(path, template, full.names = TRUE, ignore.case=TRUE)
     return(files)
 }
