@@ -22,7 +22,7 @@
 #' @param datasetname dataset name
 #' @param ... additional parameters
 #' 
-#' @import ncdf
+#' @import ncdf4
 #' @return list of variables and their attributes
 #' @export
 

@@ -11,9 +11,6 @@ retrieve_atts(vars_present, all_vars)
 
 \item{all_vars}{all variables?}
 }
-\value{
-
-}
 \description{
 Retrieve variables longnames to be written in NetCDF
 }

@@ -11,9 +11,6 @@ retrieve_units(vars_present, all_vars)
 
 \item{all_vars}{}
 }
-\value{
-
-}
 \description{
 Retrieves original and target variable units
 }

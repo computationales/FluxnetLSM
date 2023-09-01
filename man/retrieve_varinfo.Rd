@@ -13,9 +13,6 @@ retrieve_varinfo(vars_present, all_vars, attribute)
 
 \item{attribute}{}
 }
-\value{
-
-}
 \description{
 Retrieves variable information
 }

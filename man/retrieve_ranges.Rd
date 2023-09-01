@@ -11,9 +11,6 @@ retrieve_ranges(vars_present, all_vars)
 
 \item{all_vars}{all variable ranges}
 }
-\value{
-
-}
 \description{
 Retrieves acceptable variable ranges
 }

@@ -4,7 +4,7 @@
 \alias{SynthesizeLWdown}
 \title{Synthesises downward longwave radiation based on Tair and rel humidity}
 \usage{
-SynthesizeLWdown(TairK, RH, technique)
+SynthesizeLWdown(TairK, RH, technique = "Abramowitz_2012")
 }
 \description{
 Synthesises downward longwave radiation based on Tair and rel humidity

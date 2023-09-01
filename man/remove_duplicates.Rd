@@ -9,9 +9,6 @@ remove_duplicates(indices)
 \arguments{
 \item{indices}{indices to remove}
 }
-\value{
-
-}
 \description{
 If a Fluxnet variable is processed more than once remove doubless
 }

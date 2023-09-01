@@ -11,9 +11,6 @@ duplicate_columns(data, vars)
 
 \item{vars}{variables}
 }
-\value{
-
-}
 \description{
 If a variable is being processes multiple times duplicate column
 }
